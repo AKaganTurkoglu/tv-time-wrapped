@@ -1,0 +1,293 @@
+:root {
+  /* Color Palette - HSL/RGB matching TV Time brand */
+  --bg-base: #0a0a0d;
+  --bg-surface: #1a1a1f;
+  --bg-glass: rgba(26, 26, 31, 0.7);
+  --bg-glass-bright: rgba(40, 40, 48, 0.8);
+  
+  /* TV Time Logo Vibe Colors */
+  --color-primary: #ffd000; /* TV Time Yellow */
+  --color-primary-rgb: 255, 208, 0;
+  --color-secondary: #ffffff; /* White */
+  --color-secondary-rgb: 255, 255, 255;
+  --color-accent: #8e8e93; /* Silver Gray */
+  --color-accent-rgb: 142, 142, 147;
+  --color-success: #10b981; /* Green */
+  --color-success-rgb: 16, 185, 129;
+  
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #b3b3b7;
+  --text-muted: #76767c;
+  
+  /* Border & Shadows */
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-hover: rgba(255, 255, 255, 0.15);
+  --shadow-glow: 0 0 25px rgba(255, 208, 0, 0.12);
+  --shadow-glow-pink: 0 0 25px rgba(255, 255, 255, 0.1);
+  --shadow-glow-cyan: 0 0 25px rgba(142, 142, 147, 0.1);
+  
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-header: 'Outfit', sans-serif;
+  
+  /* Misc */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.5;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 208, 0, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.03) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(142, 142, 147, 0.02) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+button, input {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-smooth);
+}
+
+.glass-panel-hover:hover {
+  border-color: var(--border-glass-hover);
+  background: var(--bg-glass-bright);
+}
+
+/* Common UI Utilities */
+.text-gradient-purple-pink {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan-blue {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #e0b700 100%);
+  border: none;
+  font-weight: 700;
+  color: #0c0c0e;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 14px 0 rgba(255, 208, 0, 0.2);
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(255, 208, 0, 0.35), var(--shadow-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(255, 208, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 208, 0, 0.25);
+  }
+}
+
+.pulse-glow-animation {
+  animation: pulseGlow 4s infinite alternate;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Wrapped Mode specific styles */
+.wrapped-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #030307;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapped-story-card {
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  max-height: 850px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+@media (min-width: 481px) {
+  .wrapped-story-card {
+    border-radius: var(--radius-xl);
+    height: 85vh;
+    border: 1px solid var(--border-glass);
+  }
+}
+
+.progress-bar-container {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.progress-bar-bg {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  flex-grow: 1;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--text-primary);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.progress-bar-fill.active {
+  width: 100%;
+}
+
+.progress-bar-fill.completed {
+  width: 100%;
+}
+
+.responsive-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .responsive-charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
